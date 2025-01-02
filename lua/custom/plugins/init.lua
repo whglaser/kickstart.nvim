@@ -11,20 +11,6 @@ return {
       }
     end,
   },
-  --{
-  --  'OXY2DEV/markview.nvim',
-  --  lazy = false, -- Recommended
-  -- ft = "markdown" -- If you decide to lazy-load anyway
-
-  --  dependencies = {
-  -- You will not need this if you installed the
-  -- parsers manually
-  -- Or if the parsers are in your $RUNTIMEPATH
-  --    'nvim-treesitter/nvim-treesitter',
-
-  --    'nvim-tree/nvim-web-devicons',
-  --  },
-  -- },
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
@@ -59,11 +45,11 @@ return {
           gitcommit = {
             enabled = true,
             query = [[
-                ((message) @injection.content
-                    (#set! injection.combined)
-                    (#set! injection.include-children)
-                    (#set! injection.language "markdown"))
-            ]],
+                    ((message) @injection.content
+                        (#set! injection.combined)
+                        (#set! injection.include-children)
+                        (#set! injection.language "markdown"))
+                ]],
           },
         },
         -- Vim modes that will show a rendered view of the markdown file, :h mode()
@@ -92,15 +78,7 @@ return {
         },
         latex = {
           -- Whether LaTeX should be rendered, mainly used for health check
-          enabled = true,
-          -- Executable used to convert latex formula to rendered unicode
-          converter = 'latex2text',
-          -- Highlight for LaTeX blocks
-          highlight = 'RenderMarkdownMath',
-          -- Amount of empty lines above LaTeX blocks
-          top_pad = 0,
-          -- Amount of empty lines below LaTeX blocks
-          bottom_pad = 0,
+          enabled = false,
         },
         on = {
           -- Called when plugin initially attaches to a buffer
@@ -216,17 +194,17 @@ return {
           -- Width of the code block background:
           --  block: width of the code block
           --  full:  full width of the window
-          width = 'full',
+          width = 'block',
           -- Amount of margin to add to the left of code blocks
           -- If a floating point value < 1 is provided it is treated as a percentage of the available window space
           -- Margin available space is computed after accounting for padding
           left_margin = 0,
           -- Amount of padding to add to the left of code blocks
           -- If a floating point value < 1 is provided it is treated as a percentage of the available window space
-          left_pad = 0,
+          left_pad = 2,
           -- Amount of padding to add to the right of code blocks when width is 'block'
           -- If a floating point value < 1 is provided it is treated as a percentage of the available window space
-          right_pad = 0,
+          right_pad = 2,
           -- Minimum width to use for code blocks when width is 'block'
           min_width = 0,
           -- Determines how the top / bottom of code block are rendered:
@@ -240,10 +218,10 @@ return {
           below = '▀',
           -- Highlight for code blocks
           highlight = 'RenderMarkdownCode',
-          -- Highlight for inline code
-          highlight_inline = 'RenderMarkdownCodeInline',
           -- Highlight for language, overrides icon provider value
           highlight_language = nil,
+          -- Highlight for inline code
+          highlight_inline = 'RenderMarkdownCodeInline',
         },
         dash = {
           -- Turn on / off thematic break rendering
@@ -364,15 +342,15 @@ return {
           padding = 1,
           -- Minimum column width to use for padded or trimmed cell
           min_width = 0,
-        -- Characters used to replace table border
-        -- Correspond to top(3), delimiter(3), bottom(3), vertical, & horizontal
-        -- stylua: ignore
-        border = {
-            '┌', '┬', '┐',
-            '├', '┼', '┤',
-            '└', '┴', '┘',
-            '│', '─',
-        },
+            -- Characters used to replace table border
+            -- Correspond to top(3), delimiter(3), bottom(3), vertical, & horizontal
+            -- stylua: ignore
+            border = {
+                '┌', '┬', '┐',
+                '├', '┼', '┤',
+                '└', '┴', '┘',
+                '│', '─',
+            },
           -- Gets placed in delimiter row for each column, position is based on alignment
           alignment_indicator = '━',
           -- Highlight for table heading, delimiter, and the line above

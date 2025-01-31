@@ -91,7 +91,10 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
+
+-- For some colorschemes to work set
+vim.opt.termguicolors = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -102,7 +105,7 @@ vim.g.have_nerd_font = false
 vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -742,15 +745,26 @@ require('lazy').setup({
     lazy = false,
     priority = 1000, -- make sure to load this before all the other start plugins
     opts = { transparent = true },
-    init = function()
-      vim.cmd.colorscheme 'tokyonight-night'
-      vim.cmd.hi 'Comment gui=none'
-      vim.cmd.hi 'Normal guibg=none'
-      vim.cmd.hi 'NonText guibg=none'
-      vim.cmd.hi 'Normal ctermbg=none'
-      vim.cmd.hi 'NonText ctermbg=none'
-    end,
+    -- init = function()
+    --   vim.cmd.colorscheme 'tokyonight-night'
+    --   vim.cmd.hi 'Comment gui=none'
+    --   vim.cmd.hi 'Normal guibg=none'
+    --   vim.cmd.hi 'NonText guibg=none'
+    --   vim.cmd.hi 'Normal ctermbg=none'
+    --   vim.cmd.hi 'NonText ctermbg=none'
+    -- end,
   },
+  {
+    'rebelot/kanagawa.nvim',
+    opts = {
+      dimInactive = true,
+      transparent = true,
+    },
+  },
+  {
+    'savq/melange-nvim',
+  },
+  { 'luisiacc/gruvbox-baby', branch = 'main' },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
@@ -864,7 +878,7 @@ require('lazy').setup({
   },
 })
 
-vim.cmd.colorscheme 'tokyonight-night'
+vim.cmd.colorscheme 'melange'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -206,7 +206,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
 })
 
@@ -736,35 +736,11 @@ require('lazy').setup({
     end,
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
-    'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000, -- make sure to load this before all the other start plugins
-    opts = { transparent = true },
-    -- init = function()
-    --   vim.cmd.colorscheme 'tokyonight-night'
-    --   vim.cmd.hi 'Comment gui=none'
-    --   vim.cmd.hi 'Normal guibg=none'
-    --   vim.cmd.hi 'NonText guibg=none'
-    --   vim.cmd.hi 'Normal ctermbg=none'
-    --   vim.cmd.hi 'NonText ctermbg=none'
-    -- end,
-  },
-  {
-    'rebelot/kanagawa.nvim',
-    opts = {
-      dimInactive = true,
-      transparent = true,
-    },
-  },
+  -- Dope Colorscheme. For me it makes all of code, non-code, as well as UI very readable
+  -- https://github.com/savq/melange-nvim?tab=readme-ov-file#design
   {
     'savq/melange-nvim',
   },
-  { 'luisiacc/gruvbox-baby', branch = 'main' },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
@@ -879,6 +855,7 @@ require('lazy').setup({
 })
 
 vim.cmd.colorscheme 'melange'
+vim.cmd.highlight 'Normal guibg=transparent'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

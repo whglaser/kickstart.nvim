@@ -745,6 +745,11 @@ require('lazy').setup({
   -- https://github.com/savq/melange-nvim?tab=readme-ov-file#design
   {
     'savq/melange-nvim',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'melange'
+      vim.cmd.highlight 'Normal guibg=transparent'
+    end
   },
 
   -- Highlight todo, notes, etc in comments
@@ -859,8 +864,6 @@ require('lazy').setup({
   },
 })
 
-vim.cmd.colorscheme 'melange'
-vim.cmd.highlight 'Normal guibg=transparent'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

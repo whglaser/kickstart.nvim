@@ -557,6 +557,10 @@ require('lazy').setup({
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
+        bicep = {
+          cmd = { '/home/william/.local/share/nvim/mason/bin/bicep-lsp' },
+          filetypes = 'bicep',
+        },
 
         lua_ls = {
           -- cmd = {...},
@@ -666,10 +670,7 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
-      {
-        'zbirenbaum/copilot-cmp',
-        opts = {},
-      },
+      'zbirenbaum/copilot-cmp',
     },
     config = function()
       -- See `:help cmp`
@@ -749,7 +750,7 @@ require('lazy').setup({
     config = function()
       vim.cmd.colorscheme 'melange'
       vim.cmd.highlight 'Normal guibg=transparent'
-    end
+    end,
   },
 
   -- Highlight todo, notes, etc in comments
@@ -864,6 +865,6 @@ require('lazy').setup({
   },
 })
 
-
+vim.cmd [[ autocmd BufNewFile,BufRead *.bicep set filetype=bicep ]]
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -29,6 +29,7 @@ return {
           create_on_follow_failure = true,
         },
       }
+      vim.api.nvim_create_autocmd('BufLeave', { pattern = '*.md', command = 'silent! wall' })
     end,
   },
   {
@@ -41,7 +42,10 @@ return {
     'zbirenbaum/copilot.lua',
     cmd = 'Copilot',
     event = 'InsertEnter',
-    opts = {},
+    opts = {
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+    },
   },
   {
     'duckdm/neowarrior.nvim',
@@ -69,5 +73,10 @@ return {
         require('neowarrior').open()
       end, { desc = 'Open Neowarrior Buffer' })
     end,
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    event = 'VeryLazy',
+    opts = {},
   },
 }

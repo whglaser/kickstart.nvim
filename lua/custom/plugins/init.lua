@@ -77,6 +77,8 @@ return {
   {
     'akinsho/toggleterm.nvim',
     event = 'VeryLazy',
-    opts = {},
+    opts = {
+      open_mapping = [[<C-\>]],
+    },
   },
 }

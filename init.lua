@@ -557,10 +557,6 @@ require('lazy').setup({
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
-        bicep = {
-          cmd = { '/home/william/.local/share/nvim/mason/bin/bicep-lsp' },
-          filetypes = 'bicep',
-        },
 
         lua_ls = {
           -- cmd = {...},

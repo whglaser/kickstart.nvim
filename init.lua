@@ -860,5 +860,16 @@ require('lazy').setup({
 })
 
 vim.cmd [[ autocmd BufNewFile,BufRead *.bicep set filetype=bicep ]]
+
+vim.filetype.add {
+  pattern = {
+    ['openapi.*%.ya?ml'] = 'yaml.openapi',
+    ['openapi.*%.json'] = 'json.openapi',
+  },
+}
+
+-- Autowrite Markdown Documents!!!
+vim.api.nvim_create_autocmd('FileType', { pattern = 'markdown', command = 'set awa' })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

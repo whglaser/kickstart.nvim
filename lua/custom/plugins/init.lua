@@ -42,10 +42,18 @@ return {
     'zbirenbaum/copilot.lua',
     cmd = 'Copilot',
     event = 'InsertEnter',
-    opts = {
-      suggestion = { enabled = true },
-      panel = { enabled = true },
-    },
+    config = function()
+      require('copilot').setup {
+        panel = {
+          enabled = true,
+          auto_refresh = true,
+        },
+        suggestion = {
+          enabled = true,
+          auto_triegger = true,
+        },
+      }
+    end,
   },
   {
     'duckdm/neowarrior.nvim',
